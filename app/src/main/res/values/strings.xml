@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Bodega Yasumi</string>
+    <string name="detail_category">Home > Tecnología</string>
+    <string name="detail_name">Consola PlayStation 5 825GB + Mando Dualsense blanco | Sony</string>
+    <string name="detail_stock">¡Quedan 3 unidades!</string>
+    <string name="detail_description">Juega sin límites con la nueva consola PlayStation 5 y asómbrate con los increíbles gráficos de una generación completamente nueva de juegos. Disfruta de la potencia de una CPU, una GPU y una SSD personalizadas con E/S integradas que
+        redefinirán lo que una consola PlayStation puede hacer.</string>
+    <string name="detail_price">S/ 4,699.00</string>
+    <string name="detail_plus">+</string>
+    <string name="detail_minus">-</string>
+    <string name="detail_button__add">Add to cart</string>
+    <string name="detail_button__shop">Comprar</string>
+    <string name="detail_image__description">Imagen del producto</string>
+    <string name="detail_quantity">1</string>
 </resources>
