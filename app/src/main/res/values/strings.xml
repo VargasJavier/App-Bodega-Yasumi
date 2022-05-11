@@ -12,4 +12,7 @@
     <string name="detail_button__shop">Comprar</string>
     <string name="detail_image__description">Imagen del producto</string>
     <string name="detail_quantity">1</string>
+    <string name="body">This is a body text</string>
+    <string name="title">Title</string>
+    <string name="price">12.5</string>
 </resources>
