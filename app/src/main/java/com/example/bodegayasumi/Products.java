@@ -3,9 +3,9 @@ package com.example.bodegayasumi;
 public class Products {
 
     String nombre, descripcion;
-    float precio;
+    double precio;
 
-    public Products(String nombre, String descripcion) {
+    public Products(String nombre, String descripcion, double precio) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
@@ -19,7 +19,7 @@ public class Products {
         return descripcion;
     }
 
-    public float getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 }

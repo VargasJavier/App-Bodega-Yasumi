@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -34,7 +35,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 //import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     private RequestQueue queue;
     RecyclerView recyclerView;
@@ -56,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
 
         //fetchProducts();
         traerProductos();
+        //Llendo al detalle del producto
+
     }
 
     private void traerProductos(){
@@ -73,8 +76,8 @@ public class MainActivity extends AppCompatActivity {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         String nombre = jsonObject.getString("nombre");
                         String descripcion = jsonObject.getString("descripcion");
-                        Float precio = Float.parseFloat(jsonObject.getString("precio"));
-                        Products objeto = new Products(nombre, descripcion);
+                        double precio = jsonObject.getDouble("precio");
+                        Products objeto = new Products(nombre, descripcion, precio);
                         productsList.add(objeto);
                         adapter.notifyDataSetChanged();
                         /*Toast.makeText(MainActivity.this, String.valueOf(jsonObject), Toast.LENGTH_SHORT).show();*/
@@ -119,5 +122,10 @@ public class MainActivity extends AppCompatActivity {
     public void visitar(View v){
         Intent intent = new Intent(this, ItemDetail.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
     }
 }

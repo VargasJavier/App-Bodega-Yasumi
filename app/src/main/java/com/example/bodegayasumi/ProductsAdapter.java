@@ -31,7 +31,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
 
         holder.tvName.setText(productsList.get(position).getNombre());
         holder.tvDescription.setText(productsList.get(position).getDescripcion());
-        /*holder.tvPrice.setText((int) productsList.get(position).getPrecio());*/
+        holder.tvPrice.setText(String.format("%.2f",productsList.get(position).getPrecio()));
     }
 
     @Override
