@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         recyclerView = findViewById(R.id.recyclerView);
         progressBar = findViewById(R.id.progressBar);
         layoutManager = new LinearLayoutManager(this);
@@ -60,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void traerProductos(){
-        String url = "http://192.168.1.7:3000/api/productos";
+        String url = "http://192.168.100.14:3000/api/productos";
 
         progressBar.setVisibility(View.VISIBLE);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -73,7 +72,12 @@ public class MainActivity extends AppCompatActivity {
                     for(int i = 0; i < jsonArray.length(); i++){
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         String nombre = jsonObject.getString("nombre");
-                        Toast.makeText(MainActivity.this, String.valueOf(jsonArray.getJSONObject(i)), Toast.LENGTH_SHORT).show();
+                        String descripcion = jsonObject.getString("descripcion");
+                        Float precio = Float.parseFloat(jsonObject.getString("precio"));
+                        Products objeto = new Products(nombre, descripcion);
+                        productsList.add(objeto);
+                        adapter.notifyDataSetChanged();
+                        /*Toast.makeText(MainActivity.this, String.valueOf(jsonObject), Toast.LENGTH_SHORT).show();*/
                     }
                 }catch (JSONException e){
                     e.printStackTrace();
@@ -89,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
         Volley.newRequestQueue(this).add(request);
     }
+
 
     private void fetchProducts() {
 //        progressBar.setVisibility(View.VISIBLE);
