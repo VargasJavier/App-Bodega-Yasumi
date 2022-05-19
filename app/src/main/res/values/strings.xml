@@ -15,4 +15,8 @@
     <string name="body">This is a body text</string>
     <string name="title">Title</string>
     <string name="price">12.5</string>
+    <string name="icono_text">Ícono para ir al detalle</string>
+    <string name="nombre_text">Fanta 3L</string>
+    <string name="marca_text">Gaseosa</string>
+    <string name="imagen_text">Imagen del item</string>
 </resources>

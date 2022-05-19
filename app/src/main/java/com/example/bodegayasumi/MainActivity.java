@@ -2,6 +2,7 @@ package com.example.bodegayasumi;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private RequestQueue queue;
     RecyclerView recyclerView;
     ProgressBar progressBar;
-    LinearLayoutManager layoutManager;
+    GridLayoutManager layoutManager;
     ProductsAdapter adapter;
     List<Products> productsList = new ArrayList<>();
 
@@ -50,19 +51,25 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_main);
         recyclerView = findViewById(R.id.recyclerView);
         progressBar = findViewById(R.id.progressBar);
-        layoutManager = new LinearLayoutManager(this);
+        layoutManager = new GridLayoutManager(this, 2);
+        layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                return position == -1 ? 2 : 1;
+            }
+        });
         recyclerView.setLayoutManager(layoutManager);
         adapter = new ProductsAdapter(productsList);
         recyclerView.setAdapter(adapter);
 
         //fetchProducts();
         traerProductos();
-        //Llendo al detalle del producto
+        //Yendo al detalle del producto
 
     }
 
     private void traerProductos(){
-        String url = "http://192.168.100.14:3000/api/productos";
+        String url = "http://192.168.1.10:3000/api/productos";
 
         progressBar.setVisibility(View.VISIBLE);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -80,7 +87,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                         Products objeto = new Products(nombre, descripcion, precio);
                         productsList.add(objeto);
                         adapter.notifyDataSetChanged();
-                        /*Toast.makeText(MainActivity.this, String.valueOf(jsonObject), Toast.LENGTH_SHORT).show();*/
                     }
                 }catch (JSONException e){
                     e.printStackTrace();
