@@ -1,29 +1,21 @@
 package com.example.bodegayasumi;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
@@ -32,10 +24,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-//import retrofit2.Response;
-
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     private RequestQueue queue;
@@ -43,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     ProgressBar progressBar;
     GridLayoutManager layoutManager;
     ProductsAdapter adapter;
-    List<Products> productsList = new ArrayList<>();
+    List<Product> productList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,17 +47,34 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         });
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new ProductsAdapter(productsList);
+        adapter = new ProductsAdapter(productList, new ProductsAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Product product) {
+                mostrarDetalle(product);
+            }
+        });
         recyclerView.setAdapter(adapter);
 
-        //fetchProducts();
         traerProductos();
-        //Yendo al detalle del producto
+    }
 
+    private void mostrarDetalle(Product product){
+        Intent intent = new Intent(this, ItemDetail.class);
+        Bundle bundle = new Bundle();
+
+        bundle.putString("nombre", product.getNombre());
+        bundle.putString("descripcion", product.getDescripcion());
+        bundle.putDouble("precio", product.getPrecio());
+        bundle.putString("marca", product.getMarca());
+        bundle.putInt("stock", product.getStock());
+
+        intent.putExtras(bundle);
+
+        startActivity(intent);
     }
 
     private void traerProductos(){
-        String url = "http://192.168.1.10:3000/api/productos";
+        String url = "http://192.168.1.7:3000/api/productos";
 
         progressBar.setVisibility(View.VISIBLE);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -80,12 +85,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     JSONArray jsonArray = response.getJSONArray("data");
 
                     for(int i = 0; i < jsonArray.length(); i++){
+
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
+
                         String nombre = jsonObject.getString("nombre");
                         String descripcion = jsonObject.getString("descripcion");
                         double precio = jsonObject.getDouble("precio");
-                        Products objeto = new Products(nombre, descripcion, precio);
-                        productsList.add(objeto);
+                        JSONObject marca = jsonObject.getJSONObject("Marca");
+                        String marcaNombre = marca.getString("nombre");
+                        int stock = jsonObject.getInt("stock");
+
+                        Product objeto = new Product(nombre, descripcion, precio, marcaNombre, stock);
+
+                        productList.add(objeto);
+
                         adapter.notifyDataSetChanged();
                     }
                 }catch (JSONException e){
@@ -101,33 +114,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         });
 
         Volley.newRequestQueue(this).add(request);
-    }
-
-
-    private void fetchProducts() {
-//        progressBar.setVisibility(View.VISIBLE);
-//        RetrofitClient.getRetrofitClient().getProducts().enqueue(new Callback<List<Products>>() {
-//            @Override
-//            public void onResponse(@NonNull Call<List<Products>> call, @NonNull Response<List<Products>> response) {
-//                if (response.isSuccessful() && response.body() != null) {
-//                    Log.i("Error", ""+response.body());
-//                    productsList.addAll(response.body());
-//                    adapter.notifyDataSetChanged();
-//                    progressBar.setVisibility(View.GONE);
-//                }
-//            }
-//            @Override
-//            public void onFailure(@NonNull Call<List<Products>> call, @NonNull Throwable t) {
-//                progressBar.setVisibility(View.GONE);
-//                Log.i("Error",t.getMessage());
-//                Toast.makeText(MainActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_LONG).show();
-//            }
-//        });
-    }
-
-    public void visitar(View v){
-        Intent intent = new Intent(this, ItemDetail.class);
-        startActivity(intent);
     }
 
     @Override

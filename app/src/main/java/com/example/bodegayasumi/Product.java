@@ -1,14 +1,17 @@
 package com.example.bodegayasumi;
 
-public class Products {
+public class Product {
 
-    String nombre, descripcion;
+    String nombre, descripcion, marca;
     double precio;
+    int stock;
 
-    public Products(String nombre, String descripcion, double precio) {
+    public Product(String nombre, String descripcion, double precio, String marca, int stock) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
+        this.marca = marca;
+        this.stock = stock;
     }
 
     public String getNombre() {
@@ -21,5 +24,13 @@ public class Products {
 
     public double getPrecio() {
         return precio;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public int getStock() {
+        return stock;
     }
 }
