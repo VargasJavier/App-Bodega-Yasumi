@@ -22,7 +22,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@drawable/playstation5" />
+            app:srcCompat="@drawable/ic_liver_background" />
 
         <TextView
             android:id="@+id/tvName"
