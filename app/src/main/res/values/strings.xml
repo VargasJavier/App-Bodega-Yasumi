@@ -34,4 +34,14 @@
     <string name="ic_user">Ícono del usuario</string>
     <string name="ic_register">Imagen del register</string>
     <string name="ic_delete">Ícono delete</string>
+    <string name="ic_back">Ícono de retroceso</string>
+    <string name="confirmar">Confirmar</string>
+    <string name="txt_price">S/. 102.20</string>
+    <string name="txt_total">Costo Total:</string>
+    <string name="price_shipping">S/. 2.00</string>
+    <string name="txt_shipping">Shipping:</string>
+    <string name="price_subtotal">S/. 100.20</string>
+    <string name="txt_subtotal">Sub Total:</string>
+    <string name="txt_items">3 items</string>
+    <string name="cart_title">My Cart</string>
 </resources>
