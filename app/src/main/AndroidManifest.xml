@@ -13,7 +13,14 @@
         android:theme="@style/Theme.BodegaYasumi"
         android:usesCleartextTraffic="true">
         <activity
+<<<<<<< HEAD
             android:name=".activity_cart"
+=======
+            android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+>>>>>>> 81b3c07865677f54447fc15e8b87de2c8146ced7
             android:exported="false" />
         <activity
             android:name=".ItemDetail"
