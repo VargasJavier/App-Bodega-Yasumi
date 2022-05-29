@@ -29,4 +29,5 @@
     <string name="phone">Phone</string>
     <string name="femenino">Femenino</string>
     <string name="masculino">Masculino</string>
+    <string name="quantity">Cantidad: 3</string>
 </resources>
