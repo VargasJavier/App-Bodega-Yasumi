@@ -30,4 +30,8 @@
     <string name="femenino">Femenino</string>
     <string name="masculino">Masculino</string>
     <string name="quantity">Cantidad: 3</string>
+    <string name="full_name">Full name</string>
+    <string name="ic_user">Ícono del usuario</string>
+    <string name="ic_register">Imagen del register</string>
+    <string name="ic_delete">Ícono delete</string>
 </resources>

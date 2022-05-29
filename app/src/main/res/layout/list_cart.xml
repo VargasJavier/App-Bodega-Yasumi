@@ -16,6 +16,7 @@
             android:layout_width="134dp"
             android:layout_height="134dp"
             android:layout_weight="1"
+            android:contentDescription="@string/imagen_text"
             android:padding="16dp"
             app:srcCompat="@drawable/playstation5" />
 
@@ -68,6 +69,7 @@
                     android:id="@+id/imageView8"
                     android:layout_width="match_parent"
                     android:layout_height="24dp"
+                    android:contentDescription="@string/ic_delete"
                     app:srcCompat="@drawable/ic_delete" />
             </LinearLayout>
 
