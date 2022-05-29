@@ -11,4 +11,6 @@
     <color name="black_secondary">#050505</color>
     <color name="white">#f8f8f8</color>
     <color name="bg_card">#fafafa</color>
+    <color name="button">#0065ff</color>
+    <color name="text">#172b4d</color>
 </resources>

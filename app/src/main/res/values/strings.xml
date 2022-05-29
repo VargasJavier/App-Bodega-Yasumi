@@ -19,4 +19,14 @@
     <string name="nombre_text">Fanta 3L</string>
     <string name="marca_text">Gaseosa</string>
     <string name="imagen_text">Imagen del item</string>
+    <string name="img_login">Imagen del login</string>
+    <string name="login_txt">Login</string>
+    <string name="password">Password</string>
+    <string name="sign_out">Quiero registrarme</string>
+    <string name="email_id">Email ID</string>
+    <string name="sign_up">Ya tengo una cuenta</string>
+    <string name="sign_up_text">Sign up</string>
+    <string name="phone">Phone</string>
+    <string name="femenino">Femenino</string>
+    <string name="masculino">Masculino</string>
 </resources>

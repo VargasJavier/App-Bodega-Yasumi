@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class ItemDetail extends AppCompatActivity {
     private int quantity, stock = 10;
-    private TextView txtNombreProducto, txtDescripcion, txtQuantity, txtStock, txtPrecio;
+    private TextView txtCategoria, txtNombreProducto, txtDescripcion, txtQuantity, txtStock, txtPrecio;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +21,7 @@ public class ItemDetail extends AppCompatActivity {
     }
 
     private void enlazarControles() {
+        txtCategoria = (TextView) findViewById(R.id.txtCategoria);
         txtNombreProducto = (TextView) findViewById(R.id.txtNombreProducto);
         txtDescripcion = (TextView) findViewById(R.id.txtDescripcion);
         txtQuantity = (TextView) findViewById(R.id.txtQuantity);

@@ -87,7 +87,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     for(int i = 0; i < jsonArray.length(); i++){
 
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
-
                         String nombre = jsonObject.getString("nombre");
                         String descripcion = jsonObject.getString("descripcion");
                         double precio = jsonObject.getDouble("precio");
