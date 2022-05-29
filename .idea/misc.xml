@@ -3,6 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AppMovil/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/AppMovil/app/src/main/res/drawable/ic_liverpool_background.xml" value="0.1" />
+        <entry key="..\:/AppMovil/app/src/main/res/layout/activity_cart.xml" value="0.33" />
+        <entry key="..\:/AppMovil/app/src/main/res/layout/activity_item_detail.xml" value="0.33" />
+        <entry key="..\:/AppMovil/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/AppMovil/app/src/main/res/layout/list_item.xml" value="0.209375" />
+        <entry key="..\:/Users/Administrador/AndroidStudioProjects/BodegaYasumi/app/src/main/res/layout/activity_item_detail.xml" value="0.5852036575228595" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/BodegaYasumi/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.24140625" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/BodegaYasumi/app/src/main/res/layout-w936dp/activity_login.xml" value="0.275" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/BodegaYasumi/app/src/main/res/layout/activity_item_detail.xml" value="0.36666666666666664" />
