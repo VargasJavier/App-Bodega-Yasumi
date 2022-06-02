@@ -51,7 +51,7 @@
             app:srcCompat="@drawable/ic_email" />
 
         <EditText
-            android:id="@+id/editTextTextEmailAddress"
+            android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="16dp"
@@ -82,7 +82,7 @@
             app:srcCompat="@drawable/ic_password" />
 
         <EditText
-            android:id="@+id/editTextTextPassword"
+            android:id="@+id/editTextPassword"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:ems="10"
@@ -92,13 +92,14 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
         android:backgroundTint="@color/button"
+        android:onClick="accionar"
         android:text="@string/login_txt"
         android:textAllCaps="false"
         android:textSize="16sp"
@@ -110,10 +111,11 @@
         tools:ignore="DuplicateSpeakableTextCheck" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textViewRegistrarme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:onClick="accionar"
         android:text="@string/sign_out"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
