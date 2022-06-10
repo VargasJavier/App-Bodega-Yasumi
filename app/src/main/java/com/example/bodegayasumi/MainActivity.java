@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,11 +30,13 @@ import org.json.JSONObject;
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     private RequestQueue queue;
+    private int idProducto = 0;
     RecyclerView recyclerView;
     ProgressBar progressBar;
     GridLayoutManager layoutManager;
     ProductsAdapter adapter;
     List<Product> productList = new ArrayList<>();
+    public static List<ProductCart> cartList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,14 +59,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         });
         recyclerView.setAdapter(adapter);
-
+        savePreferences();
         traerProductos();
     }
 
     private void mostrarDetalle(Product product){
         Intent intent = new Intent(this, ItemDetail.class);
         Bundle bundle = new Bundle();
-
+        bundle.putInt("idProducto", idProducto);
         bundle.putString("nombre", product.getNombre());
         bundle.putString("descripcion", product.getDescripcion());
         bundle.putDouble("precio", product.getPrecio());
@@ -73,8 +78,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         startActivity(intent);
     }
 
+    public void irACart(View v){
+        Intent intent = new Intent(this, activity_cart.class);
+        startActivity(intent);
+    }
+
     private void traerProductos(){
-        String url = "http://192.168.1.6:3000/api/productos";
+        String url = "http://192.168.1.3:3000/api/productos";
 
         progressBar.setVisibility(View.VISIBLE);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -87,6 +97,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     for(int i = 0; i < jsonArray.length(); i++){
 
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        idProducto = jsonObject.getInt("idProducto");
                         String nombre = jsonObject.getString("nombre");
                         String descripcion = jsonObject.getString("descripcion");
                         double precio = jsonObject.getDouble("precio");
@@ -119,4 +130,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
     }
+
+    public void savePreferences(){
+        SharedPreferences preferences = getSharedPreferences("carrito", Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = preferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(cartList);
+        editor.putString("list", json);
+
+        editor.apply();
+    }
+
 }
