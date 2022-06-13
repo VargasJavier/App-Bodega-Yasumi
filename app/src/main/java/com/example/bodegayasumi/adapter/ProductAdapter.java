@@ -1,4 +1,4 @@
-package com.example.bodegayasumi;
+package com.example.bodegayasumi.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,25 +8,28 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bodegayasumi.R;
+import com.example.bodegayasumi.dto.Product;
+
 import java.util.List;
 
-public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHolder> {
+public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
 
     private final List<Product> productList;
-    final ProductsAdapter.OnItemClickListener listener;
+    final ProductAdapter.OnItemClickListener listener;
 
     public interface OnItemClickListener{
         void onItemClick(Product product);
     }
 
-    public ProductsAdapter(List<Product> productList, ProductsAdapter.OnItemClickListener listener) {
+    public ProductAdapter(List<Product> productList, ProductAdapter.OnItemClickListener listener) {
         this.productList = productList;
         this.listener = listener;
     }
 
     @NonNull
     @Override
-    public ProductsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ProductAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_item, parent, false);
         return new ViewHolder(view);
@@ -61,10 +64,10 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
         }
 
         void bindData(final Product product){
-            tvName.setText(product.getNombre());
-            tvDescription.setText(product.getDescripcion());
-            tvPrice.setText("s/ " + String.format("%.2f",product.getPrecio()));
-            tvMarca.setText(product.getMarca());
+            tvName.setText(product.getName());
+            tvDescription.setText(product.getDescription());
+            tvPrice.setText("s/ " + String.format("%.2f",product.getPrice()));
+            tvMarca.setText(product.getBrand());
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v){

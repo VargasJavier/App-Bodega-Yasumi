@@ -8,18 +8,22 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.bodegayasumi.dto.CartItem;
+import com.example.bodegayasumi.dto.CartList;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 
-public class ItemDetail extends AppCompatActivity {
-    private int quantity, stock, idProducto;
+import java.util.ArrayList;
+
+public class ItemDetailActivity extends AppCompatActivity {
+    private int quantity = 1, stock, idProducto;
     private TextView txtCategoria, txtNombreProducto, txtDescripcion, txtQuantity, txtStock, txtPrecio;
     private String nombre = null, descripcion = null, marca = null;
     private double precio = 0.00;
+//    private CartList cartList = new CartList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,15 +87,17 @@ public class ItemDetail extends AppCompatActivity {
     }
 
     public void irACart(View v){
-        Intent intent = new Intent(this, activity_cart.class);
+        Intent intent = new Intent(this, CartActivity.class);
         startActivity(intent);
     }
 
     public void addCart(View v){
         try {
 
-            ProductCart productCart = new ProductCart(idProducto, nombre, precio, quantity);
-            savePreferences(productCart);
+            CartItem cartItem = new CartItem(idProducto, nombre, precio, quantity);
+            CartList.agregarAlCarrito(cartItem);
+
+            savePreferences(CartList.obtenerTodos());
             Snackbar mySnackbar = Snackbar.make(v, "Se agregó " + quantity + " productos", Snackbar.LENGTH_LONG);
             mySnackbar.setAction(R.string.cart, new View.OnClickListener() {
                 @Override
@@ -105,34 +111,34 @@ public class ItemDetail extends AppCompatActivity {
         }
     }
 
-    public void savePreferences(ProductCart productCart){
+    public void savePreferences(ArrayList<CartItem> cartList){
         SharedPreferences preferences = getSharedPreferences("carrito", Context.MODE_PRIVATE);
-        addProduct(productCart);
+//        addProduct(cartItem);
         SharedPreferences.Editor editor = preferences.edit();
         Gson gson = new Gson();
-        String json = gson.toJson(MainActivity.cartList);
+        String json = String.valueOf(gson.toJson(cartList));
         editor.putString("list", json);
 
         editor.apply();
     }
 
-    public int isExist(){
-        if(MainActivity.cartList.size() > 0){
-            for (int i = 0; i < MainActivity.cartList.size(); i++){
-                if(MainActivity.cartList.get(i).getId() == idProducto)
-                    return i;
-            }
-        }
-        return -1;
-    }
+//    public int isExist(){
+//        if(MainActivity.cartList.size() > 0){
+//            for (int i = 0; i < MainActivity.cartList.size(); i++){
+//                if(MainActivity.cartList.get(i).getProductId() == idProducto)
+//                    return i;
+//            }
+//        }
+//        return -1;
+//    }
 
-    public void addProduct(ProductCart productCart){
-        int index = isExist();
-        if(index == -1){
-            MainActivity.cartList.add(productCart);
-            return;
-        }
-        int oldQuantity = MainActivity.cartList.get(index).getQuantity();
-        MainActivity.cartList.get(index).setQuantity(oldQuantity + productCart.getQuantity());
-    }
+//    public void addProduct(CartItem cartItem){
+//        int index = isExist();
+//        if(index == -1){
+//            MainActivity.cartList.add(cartItem);
+//            return;
+//        }
+//        int oldQuantity = MainActivity.cartList.get(index).getQuantity();
+//        MainActivity.cartList.get(index).setQuantity(oldQuantity + cartItem.getQuantity());
+//    }
 }

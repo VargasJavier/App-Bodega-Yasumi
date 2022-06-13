@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -53,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, MainActivity.class);
 
-        String url = "http://192.168.1.3:3000/api/usuarios/sign-in";
+        String url = "http://192.168.1.7:3000/api/usuarios/sign-in";
 
         JSONObject body = new JSONObject();
         body.put("correo", correo);

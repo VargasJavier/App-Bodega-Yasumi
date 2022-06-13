@@ -1,4 +1,4 @@
-package com.example.bodegayasumi;
+package com.example.bodegayasumi.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,25 +8,28 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bodegayasumi.R;
+import com.example.bodegayasumi.dto.CartItem;
+
 import java.util.ArrayList;
-import java.util.List;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolderCart> {
-    ArrayList<ProductCart> cartArrayList;
+    ArrayList<CartItem> cartArrayList;
 
-    public CartAdapter(ArrayList<ProductCart> cartArrayList) {
+    public CartAdapter(ArrayList<CartItem> cartArrayList) {
         this.cartArrayList = cartArrayList;
     }
 
     @NonNull
     @Override
     public CartAdapter.ViewHolderCart onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_cart, null, false);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.list_cart, parent, false);
         return new ViewHolderCart(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CartAdapter.ViewHolderCart holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolderCart holder, int position) {
         holder.tvName.setText(cartArrayList.get(position).getName());
         holder.tvPrice.setText((int) cartArrayList.get(position).getPrice());
         holder.tvQuantity.setText(cartArrayList.get(position).getQuantity());

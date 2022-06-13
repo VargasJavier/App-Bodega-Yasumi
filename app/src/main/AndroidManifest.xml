@@ -13,7 +13,7 @@
         android:theme="@style/Theme.BodegaYasumi"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".activity_cart"
+            android:name=".CartActivity"
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"
@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ItemDetail"
+            android:name=".ItemDetailActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

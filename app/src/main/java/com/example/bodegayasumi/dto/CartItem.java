@@ -1,23 +1,23 @@
-package com.example.bodegayasumi;
+package com.example.bodegayasumi.dto;
 
-public class ProductCart {
+public class CartItem {
     private String name;
     private double price;
-    private int quantity, id;
+    private int quantity, productId;
 
-    public ProductCart(int id, String name, double price, int quantity) {
-        this.id = id;
+    public CartItem(int productId, String name, double price, int quantity) {
+        this.productId = productId;
         this.name = name;
         this.price = price;
         this.quantity = quantity;
     }
 
-    public int getId() {
-        return id;
+    public int getProductId() {
+        return productId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 
     public String getName() {

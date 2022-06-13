@@ -7,18 +7,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
+import com.example.bodegayasumi.adapter.CartAdapter;
+import com.example.bodegayasumi.dto.CartItem;
+import com.example.bodegayasumi.dto.CartList;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class activity_cart extends AppCompatActivity {
+public class CartActivity extends AppCompatActivity {
 
     private RecyclerView myList;
     private RecyclerView.LayoutManager layoutManager;
-    ArrayList<ProductCart> cartList = new ArrayList<>();
+    ArrayList<CartItem> cartList = new ArrayList<>();
     CartAdapter cartAdapter;
 
     TextView tvItems;
@@ -33,7 +36,7 @@ public class activity_cart extends AppCompatActivity {
         myList = findViewById(R.id.myList);
         myList.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
-        cartAdapter = new CartAdapter(cartList);
+        cartAdapter = new CartAdapter(CartList.obtenerTodos());
         myList.setLayoutManager(layoutManager);
         myList.setAdapter(cartAdapter);
 
@@ -44,7 +47,8 @@ public class activity_cart extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("carrito", Context.MODE_PRIVATE);
         Gson gson = new Gson();
         String json = sharedPreferences.getString("list", null);
-        cartList = gson.fromJson(json, cartList.getClass());
+//        cartList = gson.fromJson(json, cartList.getClass());
+        Log.i("data", json);
     }
 
 }

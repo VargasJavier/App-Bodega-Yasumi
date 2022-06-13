@@ -1,6 +1,7 @@
-package com.example.bodegayasumi;
+package com.example.bodegayasumi.sin_uso;
 
-import java.security.cert.CertPathBuilder;
+import com.example.bodegayasumi.sin_uso.ApiInterface;
+
 import java.security.cert.CertificateException;
 
 import javax.net.ssl.HostnameVerifier;

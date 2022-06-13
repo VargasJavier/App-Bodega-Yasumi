@@ -1,4 +1,6 @@
-package com.example.bodegayasumi;
+package com.example.bodegayasumi.sin_uso;
+
+import com.example.bodegayasumi.dto.Product;
 
 import java.util.List;
 

@@ -21,6 +21,9 @@ import java.util.ArrayList;
 import java.util.List;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.example.bodegayasumi.adapter.ProductAdapter;
+import com.example.bodegayasumi.dto.CartItem;
+import com.example.bodegayasumi.dto.Product;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -34,9 +37,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     RecyclerView recyclerView;
     ProgressBar progressBar;
     GridLayoutManager layoutManager;
-    ProductsAdapter adapter;
+    ProductAdapter adapter;
     List<Product> productList = new ArrayList<>();
-    public static List<ProductCart> cartList = new ArrayList<>();
+    public static List<CartItem> cartList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         });
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new ProductsAdapter(productList, new ProductsAdapter.OnItemClickListener() {
+        adapter = new ProductAdapter(productList, new ProductAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Product product) {
                 mostrarDetalle(product);
@@ -64,13 +67,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     private void mostrarDetalle(Product product){
-        Intent intent = new Intent(this, ItemDetail.class);
+        Intent intent = new Intent(this, ItemDetailActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putInt("idProducto", idProducto);
-        bundle.putString("nombre", product.getNombre());
-        bundle.putString("descripcion", product.getDescripcion());
-        bundle.putDouble("precio", product.getPrecio());
-        bundle.putString("marca", product.getMarca());
+        bundle.putInt("idProducto", product.getProductId());
+        bundle.putString("nombre", product.getName());
+        bundle.putString("descripcion", product.getDescription());
+        bundle.putDouble("precio", product.getPrice());
+        bundle.putString("marca", product.getBrand());
         bundle.putInt("stock", product.getStock());
 
         intent.putExtras(bundle);
@@ -79,12 +82,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public void irACart(View v){
-        Intent intent = new Intent(this, activity_cart.class);
+        Intent intent = new Intent(this, CartActivity.class);
         startActivity(intent);
     }
 
     private void traerProductos(){
-        String url = "http://192.168.1.3:3000/api/productos";
+        String url = "http://192.168.1.7:3000/api/productos";
 
         progressBar.setVisibility(View.VISIBLE);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -97,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     for(int i = 0; i < jsonArray.length(); i++){
 
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
-                        idProducto = jsonObject.getInt("idProducto");
+                        int idProducto = jsonObject.getInt("idProducto");
                         String nombre = jsonObject.getString("nombre");
                         String descripcion = jsonObject.getString("descripcion");
                         double precio = jsonObject.getDouble("precio");
@@ -105,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                         String marcaNombre = marca.getString("nombre");
                         int stock = jsonObject.getInt("stock");
 
-                        Product objeto = new Product(nombre, descripcion, precio, marcaNombre, stock);
+                        Product objeto = new Product(idProducto, nombre, descripcion, marcaNombre, precio, stock);
 
                         productList.add(objeto);
 
