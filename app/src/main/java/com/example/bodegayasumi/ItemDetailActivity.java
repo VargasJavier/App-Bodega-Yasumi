@@ -105,6 +105,7 @@ public class ItemDetailActivity extends AppCompatActivity {
                     irACart(v);
                 }
             });
+            mySnackbar.show();
         }catch (Exception e){
             Log.i("Error", "Error: " + e.getMessage());
             Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_LONG).show();

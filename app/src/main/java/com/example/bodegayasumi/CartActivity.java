@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.bodegayasumi.adapter.CartAdapter;
@@ -48,7 +49,12 @@ public class CartActivity extends AppCompatActivity {
         Gson gson = new Gson();
         String json = sharedPreferences.getString("list", null);
 //        cartList = gson.fromJson(json, cartList.getClass());
+        Log.i("data", "Mostraremos el json");
         Log.i("data", json);
+    }
+
+    public void back(View view){
+        finish();
     }
 
 }

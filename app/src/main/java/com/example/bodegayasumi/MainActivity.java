@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ProgressBar;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     ProductAdapter adapter;
     List<Product> productList = new ArrayList<>();
     public static List<CartItem> cartList = new ArrayList<>();
+    public static final String URL_API = "http://192.168.1.3:3000";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         recyclerView.setAdapter(adapter);
         savePreferences();
         traerProductos();
+        Log.i("info", "Estamos en el main");
     }
 
     private void mostrarDetalle(Product product){
@@ -87,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     private void traerProductos(){
-        String url = "http://192.168.1.7:3000/api/productos";
+        String url = URL_API + "/api/productos";
 
         progressBar.setVisibility(View.VISIBLE);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {

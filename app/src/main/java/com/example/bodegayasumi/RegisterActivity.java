@@ -63,7 +63,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, LoginActivity.class);
 
-        String url = "http://192.168.1.7:3000/api/usuarios/";
+        String url = MainActivity.URL_API + "/api/usuarios/";
 
         JSONObject body = new JSONObject();
         body.put("nombre", nombre);
