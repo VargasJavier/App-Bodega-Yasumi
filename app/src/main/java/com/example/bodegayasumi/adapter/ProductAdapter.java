@@ -3,6 +3,7 @@ package com.example.bodegayasumi.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bodegayasumi.R;
 import com.example.bodegayasumi.dto.Product;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -32,16 +34,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     public ProductAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_item, parent, false);
-        return new ViewHolder(view);
+        return new ProductAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
-//        holder.tvName.setText(productList.get(position).getNombre());
-//        holder.tvDescription.setText(productList.get(position).getDescripcion());
-//        holder.tvPrice.setText("s/ " + String.format("%.2f",productList.get(position).getPrecio()));
-//        holder.tvMarca.setText(productList.get(position).getMarca());
+    public void onBindViewHolder(@NonNull ProductAdapter.ViewHolder holder, int position) {
         holder.bindData(productList.get(position));
     }
 
@@ -53,6 +50,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView tvName, tvDescription, tvPrice, tvMarca;
+        ImageView ivProductImagePrincipal;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -61,13 +59,15 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             tvDescription = itemView.findViewById(R.id.tvDescription);
             tvPrice = itemView.findViewById(R.id.tvPrice);
             tvMarca = itemView.findViewById(R.id.tvMarca);
+            ivProductImagePrincipal = itemView.findViewById(R.id.imageView);
         }
 
         void bindData(final Product product){
             tvName.setText(product.getName());
             tvDescription.setText(product.getDescription());
-            tvPrice.setText("s/ " + String.format("%.2f",product.getPrice()));
+            tvPrice.setText("S/. " + String.format("%.2f",product.getPrice()));
             tvMarca.setText(product.getBrand());
+            Picasso.get().load("http://192.168.1.2:3000/" + product.getImageName()).into(ivProductImagePrincipal);
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v){

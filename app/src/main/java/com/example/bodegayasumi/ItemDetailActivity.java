@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,13 +16,15 @@ import com.example.bodegayasumi.dto.CartItem;
 import com.example.bodegayasumi.dto.CartList;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class ItemDetailActivity extends AppCompatActivity {
     private int quantity = 1, stock, idProducto;
     private TextView txtCategoria, txtNombreProducto, txtDescripcion, txtQuantity, txtStock, txtPrecio;
-    private String nombre = null, descripcion = null, marca = null;
+    private ImageView ivImagenDetalle;
+    private String nombre = null, descripcion = null, marca = null, nombreImage = null;
     private double precio = 0.00;
 //    private CartList cartList = new CartList();
 
@@ -40,6 +43,7 @@ public class ItemDetailActivity extends AppCompatActivity {
         txtQuantity = (TextView) findViewById(R.id.txtQuantity);
         txtStock = (TextView) findViewById(R.id.txtStock);
         txtPrecio = (TextView) findViewById(R.id.txtPrecio);
+        ivImagenDetalle = (ImageView) findViewById(R.id.imageView2);
     }
 
     public void obtenerDatos(){
@@ -51,10 +55,13 @@ public class ItemDetailActivity extends AppCompatActivity {
             descripcion = bundle.getString("descripcion");
             precio = bundle.getDouble("precio");
             marca = bundle.getString("marca");
+            nombreImage = bundle.getString("imagen");
             stock = bundle.getInt("stock");
 
             this.txtNombreProducto.setText(nombre);
             this.txtDescripcion.setText(descripcion);
+
+            Picasso.get().load("http://192.168.1.2:3000/" + nombreImage).into(ivImagenDetalle);
 
             if(stock <= 10){
                 this.txtStock.setText("¡Quedan solo " + stock + " unidades!");
@@ -94,7 +101,7 @@ public class ItemDetailActivity extends AppCompatActivity {
     public void addCart(View v){
         try {
 
-            CartItem cartItem = new CartItem(idProducto, nombre, precio, quantity);
+            CartItem cartItem = new CartItem(nombre, nombreImage, precio, quantity, idProducto);
             CartList.agregarAlCarrito(cartItem);
 
             savePreferences(CartList.obtenerTodos());

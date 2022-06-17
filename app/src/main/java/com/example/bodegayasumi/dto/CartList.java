@@ -39,4 +39,24 @@ public class CartList {
     public static ArrayList<CartItem> obtenerTodos(){
         return cartItems;
     }
+
+    public static int obtenerCantidadElementos(){
+        int cantidad = 0;
+
+        for(int i = 0; i < cartItems.size(); i++){
+            cantidad += cartItems.get(i).getQuantity();
+        }
+
+        return cantidad;
+    }
+
+    public static double obtenerSubTotal(){
+        double subTotal = 0.0;
+
+        for(int i = 0; i < cartItems.size(); i++){
+            subTotal += cartItems.get(i).getPrice() * cartItems.get(i).getQuantity();
+        }
+
+        return subTotal;
+    }
 }

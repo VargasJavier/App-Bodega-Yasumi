@@ -3,16 +3,17 @@ package com.example.bodegayasumi.dto;
 public class Product {
 
     private int productId, stock;
-    private String name, description, brand;
+    private String name, description, brand, imageName;
     private double price;
 
-    public Product(int productId, String name, String description, String brand, double price, int stock) {
+    public Product(int productId, int stock, String name, String description, String brand, String imageName, double price) {
         this.productId = productId;
+        this.stock = stock;
         this.name = name;
         this.description = description;
         this.brand = brand;
+        this.imageName = imageName;
         this.price = price;
-        this.stock = stock;
     }
 
     public int getProductId() {
@@ -21,6 +22,14 @@ public class Product {
 
     public void setProductId(int productId) {
         this.productId = productId;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 
     public String getName() {
@@ -47,19 +56,19 @@ public class Product {
         this.brand = brand;
     }
 
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
+
     public double getPrice() {
         return price;
     }
 
     public void setPrice(double price) {
         this.price = price;
-    }
-
-    public int getStock() {
-        return stock;
-    }
-
-    public void setStock(int stock) {
-        this.stock = stock;
     }
 }

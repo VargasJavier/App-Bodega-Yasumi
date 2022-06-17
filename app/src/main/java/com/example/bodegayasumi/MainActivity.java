@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     ProductAdapter adapter;
     List<Product> productList = new ArrayList<>();
     public static List<CartItem> cartList = new ArrayList<>();
-    public static final String URL_API = "http://192.168.1.3:3000";
+    public static final String URL_API = "http://192.168.1.2:3000";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         });
         recyclerView.setAdapter(adapter);
-        savePreferences();
+//        savePreferences();
         traerProductos();
         Log.i("info", "Estamos en el main");
     }
@@ -77,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         bundle.putString("descripcion", product.getDescription());
         bundle.putDouble("precio", product.getPrice());
         bundle.putString("marca", product.getBrand());
+        bundle.putString("imagen", product.getImageName());
         bundle.putInt("stock", product.getStock());
 
         intent.putExtras(bundle);
@@ -108,10 +109,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                         String descripcion = jsonObject.getString("descripcion");
                         double precio = jsonObject.getDouble("precio");
                         JSONObject marca = jsonObject.getJSONObject("Marca");
+                        JSONObject imagen = jsonObject.getJSONObject("Imagen");
                         String marcaNombre = marca.getString("nombre");
+                        String imagenNombre = imagen.getString("nombre");
                         int stock = jsonObject.getInt("stock");
 
-                        Product objeto = new Product(idProducto, nombre, descripcion, marcaNombre, precio, stock);
+                        Product objeto = new Product(idProducto, stock, nombre, descripcion, marcaNombre, imagenNombre, precio);
 
                         productList.add(objeto);
 

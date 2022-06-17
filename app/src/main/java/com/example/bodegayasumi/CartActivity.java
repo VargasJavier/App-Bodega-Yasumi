@@ -25,14 +25,14 @@ public class CartActivity extends AppCompatActivity {
     ArrayList<CartItem> cartList = new ArrayList<>();
     CartAdapter cartAdapter;
 
-    TextView tvItems;
+    TextView tvItems, tvSubTotal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
-        loadData();
+//        loadData();
 
         myList = findViewById(R.id.myList);
         myList.setHasFixedSize(true);
@@ -42,6 +42,10 @@ public class CartActivity extends AppCompatActivity {
         myList.setAdapter(cartAdapter);
 
         tvItems = findViewById(R.id.txtCantidad);
+        tvSubTotal = findViewById(R.id.txtSubTotal);
+
+        tvItems.setText(String.valueOf(CartList.obtenerCantidadElementos()) + " productos");
+        tvSubTotal.setText("S/. " + String.format("%.2f", CartList.obtenerSubTotal()));
     }
 
     private void loadData(){
