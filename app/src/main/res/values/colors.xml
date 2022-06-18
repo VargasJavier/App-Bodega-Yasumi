@@ -13,4 +13,7 @@
     <color name="bg_card">#fafafa</color>
     <color name="button">#0065ff</color>
     <color name="text">#172b4d</color>
+    <color name="terciary_color">#f89029</color>
+    <color name="secondary_color">#28d885</color>
+    <color name="cuartery_color">#146c42</color>
 </resources>
