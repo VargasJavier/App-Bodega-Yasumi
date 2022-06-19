@@ -157,6 +157,7 @@
         android:id="@+id/btnConfirmar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="orderNew"
         android:text="@string/confirmar"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

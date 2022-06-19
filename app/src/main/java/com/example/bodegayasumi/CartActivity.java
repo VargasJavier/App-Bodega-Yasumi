@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 
 public class CartActivity extends AppCompatActivity {
 
+    private double subtotal;
     private RecyclerView myList;
     private RecyclerView.LayoutManager layoutManager;
     ArrayList<CartItem> cartList = new ArrayList<>();
@@ -43,9 +45,9 @@ public class CartActivity extends AppCompatActivity {
 
         tvItems = findViewById(R.id.txtCantidad);
         tvSubTotal = findViewById(R.id.txtSubTotal);
-
+        subtotal = CartList.obtenerSubTotal();
         tvItems.setText(String.valueOf(CartList.obtenerCantidadElementos()) + " productos");
-        tvSubTotal.setText("S/. " + String.format("%.2f", CartList.obtenerSubTotal()));
+        tvSubTotal.setText("S/. " + String.format("%.2f", subtotal));
     }
 
     private void loadData(){
@@ -59,6 +61,16 @@ public class CartActivity extends AppCompatActivity {
 
     public void back(View view){
         finish();
+    }
+
+    public void orderNew(View view){
+        Intent intent = new Intent(this, PaymentActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putDouble("subtotal", subtotal);
+
+        intent.putExtras(bundle);
+
+        startActivity(intent);
     }
 
 }
