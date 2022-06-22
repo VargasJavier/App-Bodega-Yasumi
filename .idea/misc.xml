@@ -9,30 +9,43 @@
         <entry key="..\:/AppMovil/app/src/main/res/layout/activity_item_detail.xml" value="0.33" />
         <entry key="..\:/AppMovil/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/AppMovil/app/src/main/res/layout/list_item.xml" value="0.209375" />
-        <entry key="..\:/Users/Administrador/AndroidStudioProjects/BodegaYasumi/app/src/main/res/drawable/ic_delivery.xml" value="0.3605" />
-        <entry key="..\:/Users/Administrador/AndroidStudioProjects/BodegaYasumi/app/src/main/res/drawable/shape_button.xml" value="0.3605" />
-        <entry key="..\:/Users/Administrador/AndroidStudioProjects/BodegaYasumi/app/src/main/res/drawable/shape_circle.xml" value="0.3605" />
-        <entry key="..\:/Users/Administrador/AndroidStudioProjects/BodegaYasumi/app/src/main/res/drawable/shape_delivery.xml" value="0.3605" />
-        <entry key="..\:/Users/Administrador/AndroidStudioProjects/BodegaYasumi/app/src/main/res/drawable/shape_linear.xml" value="0.3605" />
-        <entry key="..\:/Users/Administrador/AndroidStudioProjects/BodegaYasumi/app/src/main/res/drawable/shape_subbtn.xml" value="0.3605" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/BodegaYasumi/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.24140625" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/BodegaYasumi/app/src/main/res/layout-w936dp/activity_login.xml" value="0.275" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/BodegaYasumi/app/src/main/res/layout/activity_cart.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/BodegaYasumi/app/src/main/res/layout/activity_item_detail.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/BodegaYasumi/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/BodegaYasumi/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Administrador/AndroidStudioProjects/BodegaYasumi/app/src/main/res/layout/activity_payment.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/BodegaYasumi/app/src/main/res/layout/activity_register.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/BodegaYasumi/app/src/main/res/layout/list_cart.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Administrador/AndroidStudioProjects/BodegaYasumi/app/src/main/res/layout/list_item.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Administrador/AndroidStudioProjects/BodegaYasumi/app/src/main/res/layout/shape_linear.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/benja/AndroidStudioProjects/App-Bodega-Yasumi/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.176" />
+        <entry key="..\:/Users/benja/AndroidStudioProjects/App-Bodega-Yasumi/app/src/main/res/drawable/ic__back.xml" value="0.176" />
+        <entry key="..\:/Users/benja/AndroidStudioProjects/App-Bodega-Yasumi/app/src/main/res/drawable/ic_account.xml" value="0.176" />
         <entry key="..\:/Users/benja/AndroidStudioProjects/App-Bodega-Yasumi/app/src/main/res/drawable/ic_baseline_arrow_right_alt_24.xml" value="0.2075" />
+        <entry key="..\:/Users/benja/AndroidStudioProjects/App-Bodega-Yasumi/app/src/main/res/drawable/ic_cart.xml" value="0.176" />
+        <entry key="..\:/Users/benja/AndroidStudioProjects/App-Bodega-Yasumi/app/src/main/res/drawable/ic_coupon.xml" value="0.178" />
+        <entry key="..\:/Users/benja/AndroidStudioProjects/App-Bodega-Yasumi/app/src/main/res/drawable/ic_delete.xml" value="0.176" />
+        <entry key="..\:/Users/benja/AndroidStudioProjects/App-Bodega-Yasumi/app/src/main/res/drawable/ic_delivery.xml" value="0.176" />
+        <entry key="..\:/Users/benja/AndroidStudioProjects/App-Bodega-Yasumi/app/src/main/res/drawable/ic_email.xml" value="0.176" />
+        <entry key="..\:/Users/benja/AndroidStudioProjects/App-Bodega-Yasumi/app/src/main/res/drawable/ic_launcher_background.xml" value="0.176" />
+        <entry key="..\:/Users/benja/AndroidStudioProjects/App-Bodega-Yasumi/app/src/main/res/drawable/ic_password.xml" value="0.176" />
+        <entry key="..\:/Users/benja/AndroidStudioProjects/App-Bodega-Yasumi/app/src/main/res/drawable/ic_phone.xml" value="0.176" />
+        <entry key="..\:/Users/benja/AndroidStudioProjects/App-Bodega-Yasumi/app/src/main/res/drawable/ic_shopping.xml" value="0.176" />
+        <entry key="..\:/Users/benja/AndroidStudioProjects/App-Bodega-Yasumi/app/src/main/res/drawable/ic_warning.xml" value="0.176" />
+        <entry key="..\:/Users/benja/AndroidStudioProjects/App-Bodega-Yasumi/app/src/main/res/drawable/ic_welcome.xml" value="0.176" />
+        <entry key="..\:/Users/benja/AndroidStudioProjects/App-Bodega-Yasumi/app/src/main/res/drawable/shape_circle.xml" value="0.176" />
+        <entry key="..\:/Users/benja/AndroidStudioProjects/App-Bodega-Yasumi/app/src/main/res/drawable/shape_delivery.xml" value="0.176" />
+        <entry key="..\:/Users/benja/AndroidStudioProjects/App-Bodega-Yasumi/app/src/main/res/drawable/shape_linear.xml" value="0.176" />
+        <entry key="..\:/Users/benja/AndroidStudioProjects/App-Bodega-Yasumi/app/src/main/res/drawable/shape_subbtn.xml" value="0.176" />
         <entry key="..\:/Users/benja/AndroidStudioProjects/App-Bodega-Yasumi/app/src/main/res/layout/activity_cart.xml" value="0.18" />
+        <entry key="..\:/Users/benja/AndroidStudioProjects/App-Bodega-Yasumi/app/src/main/res/layout/activity_change_map.xml" value="0.33" />
         <entry key="..\:/Users/benja/AndroidStudioProjects/App-Bodega-Yasumi/app/src/main/res/layout/activity_item_detail.xml" value="0.24276169265033407" />
+        <entry key="..\:/Users/benja/AndroidStudioProjects/App-Bodega-Yasumi/app/src/main/res/layout/activity_location.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/benja/AndroidStudioProjects/App-Bodega-Yasumi/app/src/main/res/layout/activity_login.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/benja/AndroidStudioProjects/App-Bodega-Yasumi/app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="..\:/Users/benja/AndroidStudioProjects/App-Bodega-Yasumi/app/src/main/res/layout/activity_payment.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/benja/AndroidStudioProjects/App-Bodega-Yasumi/app/src/main/res/layout/activity_register.xml" value="0.25" />
-        <entry key="..\:/Users/benja/AndroidStudioProjects/App-Bodega-Yasumi/app/src/main/res/layout/list_cart.xml" value="0.1" />
+        <entry key="..\:/Users/benja/AndroidStudioProjects/App-Bodega-Yasumi/app/src/main/res/layout/list_cart.xml" value="0.18" />
         <entry key="..\:/Users/benja/AndroidStudioProjects/App-Bodega-Yasumi/app/src/main/res/layout/list_item.xml" value="0.25" />
         <entry key="..\:/Users/benja/AndroidStudioProjects/App-Bodega-Yasumi/app/src/main/res/xml/network_security_config.xml" value="0.1" />
       </map>
