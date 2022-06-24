@@ -65,10 +65,13 @@
     <string name="products">Products</string>
     <string name="s_58_50">s/ 58.50</string>
     <string name="delivery_fee">Delivery fee</string>
-    <string name="s_8_00">s/ 8.00</string>
+    <string name="s_8_00">s/ 5.00</string>
     <string name="we_are_going_to_make_a_reservation_on_your_payment_method_when_you_order_is_delivered_we_will_charge_the_value_of_the_order">We are going to make a reservation on your payment method. When you order is delivered, we will charge the value of the order.</string>
     <string name="_1">1</string>
     <string name="place_order">Place Order</string>
     <string name="s_66_50">s/ 66.50</string>
     <string name="title_activity_change_map">ChangeMapActivity</string>
+    <string name="cono_de_regreso">Ícono de regreso</string>
+    <string name="MAPS_API_KEY">AIzaSyA77Wqwr9TzMvQdW0VBRzy-f29sTQvgqPU</string>
+    <string name="lugar_de_destino_sin_selecci_n">Lugar de destino: Sin selección</string>
 </resources>

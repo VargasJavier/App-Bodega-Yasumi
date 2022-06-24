@@ -21,13 +21,13 @@ import java.util.ArrayList;
 
 public class CartActivity extends AppCompatActivity {
 
-    private double subtotal;
+    private double subtotal, total;
     private RecyclerView myList;
     private RecyclerView.LayoutManager layoutManager;
     ArrayList<CartItem> cartList = new ArrayList<>();
     CartAdapter cartAdapter;
 
-    TextView tvItems, tvSubTotal;
+    TextView tvItems, tvSubTotal, tvTotal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +45,12 @@ public class CartActivity extends AppCompatActivity {
 
         tvItems = findViewById(R.id.txtCantidad);
         tvSubTotal = findViewById(R.id.txtSubTotal);
+        tvTotal = findViewById(R.id.txtCostoTotal);
         subtotal = CartList.obtenerSubTotal();
+        total = subtotal + 5;
         tvItems.setText(String.valueOf(CartList.obtenerCantidadElementos()) + " productos");
         tvSubTotal.setText("S/. " + String.format("%.2f", subtotal));
+        tvTotal.setText("S/. " + String.format("%.2f", total));
     }
 
     private void loadData(){
