@@ -4,25 +4,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.bodegayasumi.dto.User;
+import com.example.bodegayasumi.services.AuthService;
 
 import org.json.JSONException;
-import org.json.JSONObject;
-
 public class RegisterActivity extends AppCompatActivity {
     EditText editTextFullName, editTextEmail, editTextPassword, editTextPhone;
     RadioGroup rgrpGenre;
+    AuthService authService = new AuthService();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,52 +50,17 @@ public class RegisterActivity extends AppCompatActivity {
 
                 String[] names = fullName.split(" ");
 
-                register(names[0], email, password, names[1], names[2], phone, genre, 1, 1);
-                // metodo para registrar
+                User user = new User(names[0],email,password,names[1],names[2],phone,genre, 1,1);
+
+                register(user);
         }
     }
 
-    public void register(String nombre, String correo, String contrasena, String apellidoPat, String apellidoMat, String telefono, String sexo, int esAdmin, int estado) throws JSONException {
+    public void register(User user) throws JSONException {
 
         Intent intent = new Intent(this, LoginActivity.class);
 
-        String url = MainActivity.URL_API + "/api/usuarios/";
-
-        JSONObject body = new JSONObject();
-        body.put("nombre", nombre);
-        body.put("correo", correo);
-        body.put("contrasena", contrasena);
-        body.put("apellidoPaterno", apellidoPat);
-        body.put("apellidoMaterno", apellidoMat);
-        body.put("telefono", telefono);
-        body.put("sexo", sexo);
-        body.put("isAdmin", esAdmin);
-        body.put("estado", estado);
-
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, body,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            JSONObject jsonObject = response.getJSONObject("data");
-
-                            boolean estaRegistrado = jsonObject.getBoolean("estaRegistrado");
-
-                            if(estaRegistrado){
-                                startActivity(intent);
-                            }
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        error.printStackTrace();
-                    }
-                });
+        JsonObjectRequest request = authService.register(user, this, intent);
 
         Volley.newRequestQueue(this).add(request);
     }

@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bodegayasumi.MainActivity;
 import com.example.bodegayasumi.R;
 import com.example.bodegayasumi.dto.Product;
 import com.squareup.picasso.Picasso;
@@ -67,7 +68,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             tvDescription.setText(product.getDescription());
             tvPrice.setText("S/. " + String.format("%.2f",product.getPrice()));
             tvMarca.setText(product.getBrand());
-            Picasso.get().load("http://192.168.1.2:3000/" + product.getImageName()).into(ivProductImagePrincipal);
+            Picasso.get().load(MainActivity.URL_API + product.getImageName()).into(ivProductImagePrincipal);
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v){

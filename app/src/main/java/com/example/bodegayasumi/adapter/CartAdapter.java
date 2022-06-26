@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bodegayasumi.MainActivity;
 import com.example.bodegayasumi.R;
 import com.example.bodegayasumi.dto.CartItem;
 import com.squareup.picasso.Picasso;
@@ -59,7 +60,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolderCart
             tvName.setText(item.getName());
             tvPrice.setText("S/. " + String.format("%.2f",item.getPrice()));
             tvQuantity.setText("Cantidad: " + String.valueOf(item.getQuantity()));
-            Picasso.get().load("http://192.168.1.2:3000/" + item.getImageName()).into(ivProductImage);
+            Picasso.get().load(MainActivity.URL_API + item.getImageName()).into(ivProductImage);
         }
     }
 }

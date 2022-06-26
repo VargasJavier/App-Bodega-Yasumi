@@ -12,6 +12,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.bodegayasumi.services.AuthService;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,6 +20,7 @@ import org.json.JSONObject;
 public class LoginActivity extends AppCompatActivity {
 
     private EditText editTextEmail, editTextPassword;
+    AuthService authService = new AuthService();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,36 +54,7 @@ public class LoginActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, MainActivity.class);
 
-        String url = MainActivity.URL_API + "/api/usuarios/sign-in";
-
-        JSONObject body = new JSONObject();
-        body.put("correo", correo);
-        body.put("contrasena", contrasena);
-
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, body,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            JSONObject jsonObject = response.getJSONObject("data");
-
-                            boolean estaAutenticado = jsonObject.getBoolean("estaAutenticado");
-
-                            if(estaAutenticado){
-                                startActivity(intent);
-                            }
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        error.printStackTrace();
-                    }
-                });
+        JsonObjectRequest request = authService.login(correo, contrasena, this, intent);
 
         Volley.newRequestQueue(this).add(request);
     }

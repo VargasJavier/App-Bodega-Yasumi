@@ -25,6 +25,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.bodegayasumi.adapter.ProductAdapter;
 import com.example.bodegayasumi.dto.CartItem;
 import com.example.bodegayasumi.dto.Product;
+import com.example.bodegayasumi.services.ProductService;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -40,8 +41,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     GridLayoutManager layoutManager;
     ProductAdapter adapter;
     List<Product> productList = new ArrayList<>();
+    ProductService productService = new ProductService();
     public static List<CartItem> cartList = new ArrayList<>();
-    public static final String URL_API = "http://192.168.1.3:3000";
+    public static final String URL_API = "http://192.168.1.2:3000/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,9 +66,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         });
         recyclerView.setAdapter(adapter);
-//        savePreferences();
         traerProductos();
-        Log.i("info", "Estamos en el main");
     }
 
     private void mostrarDetalle(Product product){
@@ -91,47 +91,47 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     private void traerProductos(){
-        String url = URL_API + "/api/productos";
-
-        progressBar.setVisibility(View.VISIBLE);
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                progressBar.setVisibility(View.GONE);
-                try {
-                    JSONArray jsonArray = response.getJSONArray("data");
-
-                    for(int i = 0; i < jsonArray.length(); i++){
-
-                        JSONObject jsonObject = jsonArray.getJSONObject(i);
-                        int idProducto = jsonObject.getInt("idProducto");
-                        String nombre = jsonObject.getString("nombre");
-                        String descripcion = jsonObject.getString("descripcion");
-                        double precio = jsonObject.getDouble("precio");
-                        JSONObject marca = jsonObject.getJSONObject("Marca");
-                        JSONObject imagen = jsonObject.getJSONObject("Imagen");
-                        String marcaNombre = marca.getString("nombre");
-                        String imagenNombre = imagen.getString("nombre");
-                        int stock = jsonObject.getInt("stock");
-
-                        Product objeto = new Product(idProducto, stock, nombre, descripcion, marcaNombre, imagenNombre, precio);
-
-                        productList.add(objeto);
-
-                        adapter.notifyDataSetChanged();
-                    }
-                }catch (JSONException e){
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                progressBar.setVisibility(View.GONE);
-                error.printStackTrace();
-            }
-        });
-
+//        String url = URL_API + "api/productos";
+//
+//        progressBar.setVisibility(View.VISIBLE);
+//        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+//            @Override
+//            public void onResponse(JSONObject response) {
+//                progressBar.setVisibility(View.GONE);
+//                try {
+//                    JSONArray jsonArray = response.getJSONArray("data");
+//
+//                    for(int i = 0; i < jsonArray.length(); i++){
+//
+//                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+//                        int idProducto = jsonObject.getInt("idProducto");
+//                        String nombre = jsonObject.getString("nombre");
+//                        String descripcion = jsonObject.getString("descripcion");
+//                        double precio = jsonObject.getDouble("precio");
+//                        JSONObject marca = jsonObject.getJSONObject("Marca");
+//                        JSONObject imagen = jsonObject.getJSONObject("Imagen");
+//                        String marcaNombre = marca.getString("nombre");
+//                        String imagenNombre = imagen.getString("nombre");
+//                        int stock = jsonObject.getInt("stock");
+//
+//                        Product objeto = new Product(idProducto, stock, nombre, descripcion, marcaNombre, imagenNombre, precio);
+//
+//                        productList.add(objeto);
+//
+//                        adapter.notifyDataSetChanged();
+//                    }
+//                }catch (JSONException e){
+//                    e.printStackTrace();
+//                }
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                progressBar.setVisibility(View.GONE);
+//                error.printStackTrace();
+//            }
+//        });
+        JsonObjectRequest request = this.productService.listProducts(progressBar, adapter, productList);
         Volley.newRequestQueue(this).add(request);
     }
 
@@ -139,16 +139,4 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
     }
-
-    public void savePreferences(){
-        SharedPreferences preferences = getSharedPreferences("carrito", Context.MODE_PRIVATE);
-
-        SharedPreferences.Editor editor = preferences.edit();
-        Gson gson = new Gson();
-        String json = gson.toJson(cartList);
-        editor.putString("list", json);
-
-        editor.apply();
-    }
-
 }

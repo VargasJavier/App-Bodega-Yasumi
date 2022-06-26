@@ -61,7 +61,7 @@ public class ItemDetailActivity extends AppCompatActivity {
             this.txtNombreProducto.setText(nombre);
             this.txtDescripcion.setText(descripcion);
 
-            Picasso.get().load(MainActivity.URL_API + "/" + nombreImage).into(ivImagenDetalle);
+            Picasso.get().load(MainActivity.URL_API + nombreImage).into(ivImagenDetalle);
 
             if(stock <= 10){
                 this.txtStock.setText("¡Quedan solo " + stock + " unidades!");
