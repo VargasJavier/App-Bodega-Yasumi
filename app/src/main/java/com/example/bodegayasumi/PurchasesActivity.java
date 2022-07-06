@@ -6,21 +6,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class CompletedActivity extends AppCompatActivity {
+public class PurchasesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_completed);
+        setContentView(R.layout.activity_purchases);
     }
 
     public void isMain(View view){
         Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-
-    public void isPurchases(View view){
-        Intent intent = new Intent(this, PurchasesActivity.class);
         startActivity(intent);
     }
 }
