@@ -59,4 +59,8 @@ public class CartList {
 
         return subTotal;
     }
+
+    public static void vaciarCarrito(){
+        cartItems = new ArrayList<>();
+    }
 }

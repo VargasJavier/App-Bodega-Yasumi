@@ -10,6 +10,10 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.bodegayasumi.dto.CartList;
+import com.example.bodegayasumi.services.PurchaseService;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -20,6 +24,8 @@ import com.google.android.libraries.places.widget.AutocompleteActivity;
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
 import com.google.android.material.snackbar.Snackbar;
 import com.squareup.picasso.Picasso;
+
+import org.json.JSONException;
 
 import java.util.Arrays;
 import java.util.List;
@@ -47,8 +53,15 @@ public class PaymentActivity extends AppCompatActivity {
         finish();
     }
 
-    public void newOrder(View view){
-        Snackbar.make(view, "Se compró con éxito, causa", Snackbar.LENGTH_LONG).show();
+    public void newOrder(View view) throws JSONException {
+        Intent intent = new Intent(this, CompletedActivity.class);
+        PurchaseService purchaseService = new PurchaseService();
+
+        JsonArrayRequest request = purchaseService.registrarVenta(CartList.obtenerTodos(), 24, this, intent);
+        CartList.vaciarCarrito();
+
+        Volley.newRequestQueue(this).add(request);
+//        Snackbar.make(view, "Se compró con éxito, causa", Snackbar.LENGTH_LONG).show();
     }
 
     public void obtenerDatos(){
