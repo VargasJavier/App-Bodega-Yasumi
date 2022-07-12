@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     List<Product> purchaseList = new ArrayList<>();
     ProductService productService = new ProductService();
     public static List<CartItem> cartList = new ArrayList<>();
-    public static final String URL_API = "http://192.168.1.2:3000/";
+    public static final String URL_API = "http://192.168.0.2:3000/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
