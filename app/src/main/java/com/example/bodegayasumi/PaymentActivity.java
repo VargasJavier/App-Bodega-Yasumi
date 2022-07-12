@@ -58,7 +58,7 @@ public class PaymentActivity extends AppCompatActivity {
         PurchaseService purchaseService = new PurchaseService();
 
         JsonArrayRequest request = purchaseService.registrarVenta(CartList.obtenerTodos(), 24, this, intent);
-        CartList.vaciarCarrito();
+       // CartList.vaciarCarrito();
 
         Volley.newRequestQueue(this).add(request);
 //        Snackbar.make(view, "Se compró con éxito, causa", Snackbar.LENGTH_LONG).show();

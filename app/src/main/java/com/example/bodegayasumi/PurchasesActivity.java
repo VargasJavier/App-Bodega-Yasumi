@@ -34,7 +34,8 @@ public class PurchasesActivity extends AppCompatActivity {
         myList = findViewById(R.id.myPurchases);
         myList.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
-        cartAdapter = new CartAdapter(CartList.obtenerCompras());
+        cartAdapter = new CartAdapter(CartList.obtenerTodos());
+        Log.i("INFOX", String.valueOf(CartList.obtenerCompras()));
         myList.setLayoutManager(layoutManager);
         myList.setAdapter(cartAdapter);
     }

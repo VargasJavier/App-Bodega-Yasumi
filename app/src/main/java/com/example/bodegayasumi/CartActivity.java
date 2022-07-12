@@ -70,7 +70,6 @@ public class CartActivity extends AppCompatActivity {
         Intent intent = new Intent(this, PaymentActivity.class);
         Bundle bundle = new Bundle();
         bundle.putDouble("subtotal", subtotal);
-
         intent.putExtras(bundle);
 
         startActivity(intent);
