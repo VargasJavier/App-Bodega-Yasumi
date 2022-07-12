@@ -26,7 +26,6 @@ public class ItemDetailActivity extends AppCompatActivity {
     private ImageView ivImagenDetalle;
     private String nombre = null, descripcion = null, marca = null, nombreImage = null;
     private double precio = 0.00;
-//    private CartList cartList = new CartList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

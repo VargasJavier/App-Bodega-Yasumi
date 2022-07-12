@@ -46,6 +46,15 @@
                     android:onClick="irACart"
                     android:padding="9dp"
                     app:srcCompat="@drawable/ic_cart" />
+
+                <ImageView
+                    android:id="@+id/imageView14"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="0"
+                    android:onClick="myProductos"
+                    android:padding="9dp"
+                    app:srcCompat="@drawable/ic_shop" />
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView

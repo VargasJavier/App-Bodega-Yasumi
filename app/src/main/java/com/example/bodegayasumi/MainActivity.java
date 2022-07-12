@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     GridLayoutManager layoutManager;
     ProductAdapter adapter;
     List<Product> productList = new ArrayList<>();
+    List<Product> purchaseList = new ArrayList<>();
     ProductService productService = new ProductService();
     public static List<CartItem> cartList = new ArrayList<>();
     public static final String URL_API = "http://192.168.1.2:3000/";
@@ -87,6 +88,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     public void irACart(View v){
         Intent intent = new Intent(this, CartActivity.class);
+        startActivity(intent);
+    }
+
+    public void myProductos(View v){
+        Intent intent = new Intent(this, PurchasesActivity.class);
         startActivity(intent);
     }
 
