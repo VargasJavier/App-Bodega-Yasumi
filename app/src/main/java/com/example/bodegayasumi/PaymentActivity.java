@@ -35,7 +35,7 @@ import java.util.Objects;
 public class PaymentActivity extends AppCompatActivity {
     private double subtotal, total;
     private static final int SHIPPING = 8;
-    TextView txtSubtotal, txtTotal, txtAddress;
+    TextView txtSubtotal, txtTotal, txtAddress, txtTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +47,7 @@ public class PaymentActivity extends AppCompatActivity {
         txtSubtotal = findViewById(R.id.txtPriceProducts);
         txtTotal = findViewById(R.id.txtPriceTotal);
         txtAddress = findViewById(R.id.txtAddress);
+        txtTime = findViewById(R.id.txtTime);
     }
 
     public void back(View view){
@@ -83,6 +84,7 @@ public class PaymentActivity extends AppCompatActivity {
         Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.FULLSCREEN, fields)
                 .build(this);
         startActivityForResult(intent, 1);
+        txtTime.setText(R.string._40_60_min);
     }
 
     @Override

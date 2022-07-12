@@ -53,6 +53,7 @@
     <string name="at_delivery_point">At delivery point</string>
     <string name="delivery_time">Delivery Time</string>
     <string name="_30_45_min">30 – 45 min</string>
+    <string name="_40_60_min">45 - 60 min</string>
     <string name="payment_method">Payment method</string>
     <string name="changeasd">Change</string>
     <string name="b">B</string>
